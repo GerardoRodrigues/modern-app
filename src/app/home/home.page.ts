@@ -39,14 +39,11 @@ export class HomePage {
         }
       }),
       catchError((err: any) => {
-        console.log(err)
-
         this.erro = err.error.status_message;
         return [];
       })
     ).subscribe({
       next: res => {
-        console.log(res)
         this.movies.push(...res.results)
         if(event){
           event.target.disabled = res.total_pages === this.currentPage;
